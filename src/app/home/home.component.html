@@ -1,0 +1,52 @@
+<div class="grid-container-flow">
+    <div class="a">
+
+        <div class="nav-side-menu">
+            <div class="brand">Self-Code</div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+            <div class="menu-list">
+
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li>
+                        <a routerLink="editor">
+                            <i class="fa fa-dashboard"></i> Editor
+                        </a>
+                    </li>
+                    
+                             <!-- data-toggle="collapse" data-target="#products" class="collapsed" -->
+                    <li *ngFor="let d of data;let i = index " (click)="getContentFromUrl(d.download_url,d.name,i)">
+                            <a><span *ngIf="d.type=='dir'" class="arrow"></span>
+                                <i class="fa fa-dashboard"></i>{{ d.name }}
+                            </a>
+                            <ul *ngIf="d.type=='dir'" id="products" class="sub-menu" >
+                                <a *ngIf="idCreatedUsingIndex==i" href="#">
+                                    <li *ngFor="let da of dataFromFolder" (click)="getContentFromUrl(da.download_url,da.name,'00farman00')">
+                                        {{da.name}}
+                                    </li>
+                                </a>
+                            </ul>
+                        </li>
+                  
+                </ul>
+                <ul *ngIf="!data"> <app-preloader></app-preloader>   </ul>
+                
+                <!-- 
+                    <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <a href="#"><i class="fa fa-gift fa-lg"></i> Anlagenauswahl <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li class="active"><a href="#">RFT-H1</a></li>
+                        <li><a href="#">RFT-H2</a></li>
+                        <li><a href="#">BTB-H1</a></li>
+                        <li><a href="#">BTB-H2</a></li>
+                    </ul>
+                -->
+            </div>
+        </div>
+    </div>
+
+    <div class="b">
+        <app-editor #iddd></app-editor>
+    </div>
+</div>
