@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   content: string;
   idCreatedUsingIndex: string;
   @ViewChild('iddd', { static: true }) myVC: any;
+  appName="Self-Code";
+
+
   constructor(private httpGitService: GitserviceService, private cd: ChangeDetectorRef) { }
 
   async ngOnInit() {
@@ -54,6 +57,13 @@ export class HomeComponent implements OnInit {
     }
 
   }
+  changeAppName(){
+    this.appName="< Self-Code >"
+  }
+  changeAppNameBack(){
+    this.appName="Self-Code"
+  }
+
 
 }
 

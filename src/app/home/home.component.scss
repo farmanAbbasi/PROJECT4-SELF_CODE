@@ -308,6 +308,10 @@
 .b{grid-area: b;
  }
 
+ #appName:hover{
+     font-weight: bold;
+ }
+
 
  @media only screen  and (max-width: 760px){
     .grid-container-flow{

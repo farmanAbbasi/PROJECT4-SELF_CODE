@@ -2,7 +2,7 @@
     <div class="a">
 
         <div class="nav-side-menu">
-            <div class="brand">Self-Code</div>
+            <div id="appName" class="brand"(mouseenter)="changeAppName()" (mouseleave)="changeAppNameBack()" >{{appName}}</div>
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
             <div class="menu-list">
