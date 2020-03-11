@@ -7,18 +7,22 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { PreloaderComponent } from './preloader/preloader.component';
+import { LandingComponent } from './landing/landing.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EditorComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ParticlesModule
 
   ],
   providers: [],

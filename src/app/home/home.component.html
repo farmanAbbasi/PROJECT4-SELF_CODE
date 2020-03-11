@@ -9,7 +9,7 @@
 
                 <ul id="menu-content" class="menu-content collapse out">
                     <li>
-                        <a routerLink="editor">
+                        <a routerLink="/editor">
                             <i class="fa fa-dashboard"></i> Editor
                         </a>
                     </li>
@@ -17,7 +17,7 @@
                              <!-- data-toggle="collapse" data-target="#products" class="collapsed" -->
                     <li *ngFor="let d of data;let i = index " (click)="getContentFromUrl(d.download_url,d.name,i)">
                             <a><span *ngIf="d.type=='dir'" class="arrow"></span>
-                                <i class="fa fa-dashboard"></i>{{ d.name }}
+                                <i></i>{{ d.name }}
                             </a>
                             <ul *ngIf="d.type=='dir'" id="products" class="sub-menu" >
                                 <a *ngIf="idCreatedUsingIndex==i" href="#">

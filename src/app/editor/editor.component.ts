@@ -49,7 +49,7 @@ export class EditorComponent implements OnInit {
     this.codeEditor.getSession().setMode(LANG);
     this.codeEditor.setShowFoldWidgets(true);
     this.codeEditor.setOption("showPrintMargin", false)
-    this.codeEditor.setOption("fontSize",14);
+    this.codeEditor.setOption("fontSize",15);
     // hold reference to beautify extension
     this.editorBeautify = ace.require('ace/ext/beautify');
   }
