@@ -20,7 +20,7 @@
                                 <i></i>{{ d.name }}
                             </a>
                             <ul *ngIf="d.type=='dir'" id="products" class="sub-menu" >
-                                <a *ngIf="idCreatedUsingIndex==i" href="#">
+                                <a *ngIf="idCreatedUsingIndex==i">
                                     <li *ngFor="let da of dataFromFolder" (click)="getContentFromUrl(da.download_url,da.name,'00farman00')">
                                         {{da.name}}
                                     </li>
