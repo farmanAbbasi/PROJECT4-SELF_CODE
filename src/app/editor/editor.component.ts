@@ -51,6 +51,7 @@ export class EditorComponent implements OnInit {
     this.codeEditor.setOption("showPrintMargin", false)
     this.codeEditor.setOption("fontSize",15);
     this.codeEditor.setOption("autoScrollEditorIntoView",true)
+    this.codeEditor.setScrollSpeed(.3);
     // hold reference to beautify extension
     this.editorBeautify = ace.require('ace/ext/beautify');
   }
@@ -59,7 +60,7 @@ export class EditorComponent implements OnInit {
   private getEditorOptions(): Partial<ace.Ace.EditorOptions> & { enableBasicAutocompletion?: boolean; } {
     const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
       highlightActiveLine: true,
-      minLines: 26,
+      minLines: 24,
       maxLines: Infinity,
     };
     const extraEditorOptions = { enableBasicAutocompletion: true };

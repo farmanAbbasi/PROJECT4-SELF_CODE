@@ -41,7 +41,7 @@
             <span *ngIf="resultOfCompilation" style="margin-right:20px">Memory: {{resultOfCompilation.memory}}</span>
             <span *ngIf="resultOfCompilation">CPU Time: {{resultOfCompilation.cpuTime}}</span>
         </div>
-        <textarea style="height:15vh" *ngIf="resultOfCompilation" class="form-control output" rows="6" disabled="true"
+        <textarea  *ngIf="resultOfCompilation" class="form-control output" rows="10" disabled="true"
             aria-label="output-textarea">{{resultOfCompilation.output}}
                         </textarea>
 
