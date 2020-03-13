@@ -50,6 +50,7 @@ export class EditorComponent implements OnInit {
     this.codeEditor.setShowFoldWidgets(true);
     this.codeEditor.setOption("showPrintMargin", false)
     this.codeEditor.setOption("fontSize",15);
+    this.codeEditor.setOption("autoScrollEditorIntoView",true)
     // hold reference to beautify extension
     this.editorBeautify = ace.require('ace/ext/beautify');
   }
