@@ -37,7 +37,7 @@ export class LandingComponent implements OnInit {
           value: '#fff'
         },
         shape: {
-          type: 'star',
+          type: 'circle',
         },
         line_linked: {
           color: '#3584A7',
