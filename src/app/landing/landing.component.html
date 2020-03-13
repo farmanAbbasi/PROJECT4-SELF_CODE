@@ -2,7 +2,9 @@
 
 <div align="center" class="main">
     <h1>Welcome to the future</h1>
-    <button class="selfButton" routerLink="/home">Explore Self Code</button>
+    <input class="inputMe" #inputItem placeholder="Public userName/repoName" >
+    <p>or</p>
+    <button class="selfButton" (click)="enteringFirstTime(inputItem.value)"routerLink="/home">Explore Self Code</button>
 </div>
 
 
