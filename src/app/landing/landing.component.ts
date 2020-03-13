@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GitserviceService} from './../gitservice.service';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+ 
+  constructor(public gitService:GitserviceService){
 
+  }
 
   myStyle: object = {};
   myParams: object = {};
@@ -23,10 +26,9 @@ export class LandingComponent implements OnInit {
       'left': 0,
       'right': 0,
       'bottom': 0,
-       'background-image': 'linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%)'
-
+      'background-image': 'linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%)'
     };
-    this.myParams = {
+            this.myParams = {
       particles: {
         number: {
           value: 150,
@@ -35,12 +37,23 @@ export class LandingComponent implements OnInit {
           value: '#fff'
         },
         shape: {
-          type: 'circle',
+          type: 'star',
         },
         line_linked: {
           color: '#3584A7',
         }
       }
     }
+  }
+
+  enteringFirstTime(userrepo){
+    if(userrepo==null || userrepo.length==0){
+      //normal flow nothing to be done use your given repo and user 
+    }else{
+        this.gitService.ownerName=userrepo.split('/')[0];
+        this.gitService.repoName=userrepo.split('/')[1];
+    }
+    
+
   }
 }

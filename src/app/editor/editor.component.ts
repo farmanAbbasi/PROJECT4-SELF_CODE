@@ -45,7 +45,7 @@ export class EditorComponent implements OnInit {
     const element = this.codeEditorElmRef.nativeElement;
     const editorOptions = this.getEditorOptions();
     this.codeEditor = ace.edit(element, editorOptions);
-    this.codeEditor.setTheme(THEME3);
+    this.codeEditor.setTheme(THEME);
     this.codeEditor.getSession().setMode(LANG);
     this.codeEditor.setShowFoldWidgets(true);
     this.codeEditor.setOption("showPrintMargin", false)
