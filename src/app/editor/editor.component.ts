@@ -45,7 +45,7 @@ export class EditorComponent implements OnInit {
     const element = this.codeEditorElmRef.nativeElement;
     const editorOptions = this.getEditorOptions();
     this.codeEditor = ace.edit(element, editorOptions);
-    this.codeEditor.setTheme(THEME);
+    this.codeEditor.setTheme(THEME3);
     this.codeEditor.getSession().setMode(LANG);
     this.codeEditor.setShowFoldWidgets(true);
     this.codeEditor.setOption("showPrintMargin", false)
@@ -58,7 +58,7 @@ export class EditorComponent implements OnInit {
   private getEditorOptions(): Partial<ace.Ace.EditorOptions> & { enableBasicAutocompletion?: boolean; } {
     const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
       highlightActiveLine: true,
-      minLines: 18,
+      minLines: 26,
       maxLines: Infinity,
     };
     const extraEditorOptions = { enableBasicAutocompletion: true };
@@ -157,9 +157,10 @@ export class EditorComponent implements OnInit {
    *  beautify the editor content, rely on Ace Beautify extension.
    */
   public beautifyContent(): void {
-    if (this.codeEditor && this.editorBeautify) {
-      const session = this.codeEditor.getSession();
-      this.editorBeautify.beautify(session);
+      if (this.codeEditor && this.editorBeautify) {
+        const session = this.codeEditor.getSession();
+        this.editorBeautify.beautify(session);
+      
     }
   }
 }

@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
     this.myParams = {
       particles: {
         number: {
-          value: 100,
+          value: 150,
         },
         color: {
           value: '#fff'

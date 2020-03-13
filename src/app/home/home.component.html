@@ -6,14 +6,12 @@
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
             <div class="menu-list">
-
                 <ul id="menu-content" class="menu-content collapse out">
                     <li>
                         <a routerLink="/editor">
                             <i class="fa fa-dashboard"></i> Editor
                         </a>
                     </li>
-                    
                              <!-- data-toggle="collapse" data-target="#products" class="collapsed" -->
                     <li *ngFor="let d of data;let i = index " (click)="getContentFromUrl(d.download_url,d.name,i)">
                             <a><span *ngIf="d.type=='dir'" class="arrow"></span>
@@ -30,7 +28,6 @@
                   
                 </ul>
                 <ul *ngIf="!data"> <app-preloader></app-preloader>   </ul>
-                
                 <!-- 
                     <li data-toggle="collapse" data-target="#products" class="collapsed active">
                         <a href="#"><i class="fa fa-gift fa-lg"></i> Anlagenauswahl <span class="arrow"></span></a>
