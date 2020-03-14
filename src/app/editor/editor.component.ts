@@ -37,7 +37,7 @@ export class EditorComponent implements OnInit {
   resultOfCompilation:any;
   runClicked:boolean=false;
   lang:string="python3";
-
+  errorOccured:boolean=false;
 
 
   constructor( private httpGitService:GitserviceService) { }
@@ -53,7 +53,6 @@ export class EditorComponent implements OnInit {
     this.codeEditor.setOption("showPrintMargin", false)
     this.codeEditor.setOption("fontSize",15);
     this.codeEditor.setOption("autoScrollEditorIntoView",true)
-    this.codeEditor.setScrollSpeed(.3);
     // hold reference to beautify extension
     this.editorBeautify = ace.require('ace/ext/beautify');
   }
@@ -129,6 +128,12 @@ export class EditorComponent implements OnInit {
     this.runClicked=true;
     this.resultOfCompilation=await this.httpGitService.runAndCompileCode(postData);
     this.runClicked=false;
+    if(this.resultOfCompilation.output.toLowerCase().includes("Traceback (most recent call last):")
+    || this.resultOfCompilation.output.toLowerCase().includes("error")){
+      this.errorOccured=true;
+    }else{
+      this.errorOccured=false;
+    }
     console.log(this.resultOfCompilation);
     
   }

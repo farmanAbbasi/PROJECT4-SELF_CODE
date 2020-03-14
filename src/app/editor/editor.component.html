@@ -38,13 +38,15 @@
     <div class="d">
 
         <div class="label-box border">
-            <span class="mx-4 font-weight-light">Output</span>
-            <span *ngIf="resultOfCompilation" style="margin-right:20px">Memory: {{resultOfCompilation.memory}}</span>
-            <span *ngIf="resultOfCompilation">CPU Time: {{resultOfCompilation.cpuTime}}</span>
+            <span class="mx-4 font-weight-dark">Output</span>
+            <span *ngIf="resultOfCompilation" style="margin-right:20px ;color:black">Memory: {{resultOfCompilation.memory}}</span>
+            <span *ngIf="resultOfCompilation" style="color:black">CPU Time: {{resultOfCompilation.cpuTime}}</span>
         </div>
         <textarea  *ngIf="resultOfCompilation" class="form-control output" rows="10" disabled="true"
-            aria-label="output-textarea">{{resultOfCompilation.output}}
-                        </textarea>
+            aria-label="output-textarea" [ngStyle]="{
+                'background-color': errorOccured ? 'black' : 'white',
+                'color': errorOccured  ? 'white' : 'black'}">{{resultOfCompilation.output}}
+        </textarea>
 
     </div>
 </div>
