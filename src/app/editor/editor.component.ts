@@ -7,6 +7,7 @@ import 'ace-builds/src-noconflict/theme-twilight';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/theme-solarized_light';
 import 'ace-builds/src-noconflict/theme-dracula';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 
 import 'ace-builds/src-noconflict/ext-language_tools';
@@ -17,6 +18,7 @@ const THEME = 'ace/theme/github';
 const THEME2 = 'ace/theme/twilight';
 const THEME3='ace/theme/dracula';
 const THEME4='ace/theme/solarized_light';
+const THEME5='ace/theme/monokai';
 
 const LANG = 'ace/mode/python';
 const LANG2 = 'ace/mode/java';
@@ -86,8 +88,11 @@ export class EditorComponent implements OnInit {
     else if(valueForTheme==3){
       this.codeEditor.setTheme(THEME3);
     }
-    else{
+    else if(valueForTheme==4){
       this.codeEditor.setTheme(THEME4);
+    }
+    else{
+      this.codeEditor.setTheme(THEME5);
     }
  }
  onLanguageChange(language){

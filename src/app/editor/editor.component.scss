@@ -58,4 +58,8 @@ select.languages-select {
     color:white;
     margin-left:8px;
     margin-top:8px;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,0.24), 0 1.5px 6px rgba(0,0,0,0.12);
+}
+.btnMe:hover{
+    box-shadow: 0 3px 12px rgba(0,0,0,0.23), 0 3px 12px rgba(0,0,0,0.16);
 }
