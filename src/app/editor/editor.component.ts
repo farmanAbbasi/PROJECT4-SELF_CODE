@@ -38,6 +38,7 @@ export class EditorComponent implements OnInit {
   runClicked:boolean=false;
   lang:string="python3";
   errorOccured:boolean=false;
+  runCountJDoodle:number;
 
 
   constructor( private httpGitService:GitserviceService) { }
@@ -135,6 +136,13 @@ export class EditorComponent implements OnInit {
       this.errorOccured=false;
     }
     console.log(this.resultOfCompilation);
+    //after running
+    let postDataForHits={
+      clientId: "afc751fc18ad19bc8ae8c27335f929d4",
+      clientSecret:"e4668c407d23cc41dc2b252c1f84bb931a56fbb9a073600c7a4669926dba528f"
+    }
+    let d:any=await this.httpGitService.getHitCountFromJDoodle(postDataForHits);
+    this.runCountJDoodle=d.used;
     
   }
 

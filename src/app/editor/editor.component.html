@@ -38,9 +38,15 @@
     <div class="d">
 
         <div class="label-box border">
-            <span class="mx-4 font-weight-dark">Output</span>
+            <span style=" margin-left: 20px;
+            color: black;
+            font-weight: 200;">Output</span>
             <span *ngIf="resultOfCompilation" style="margin-right:20px ;color:black">Memory: {{resultOfCompilation.memory}}</span>
             <span *ngIf="resultOfCompilation" style="color:black">CPU Time: {{resultOfCompilation.cpuTime}}</span>
+            <span style=" margin-right: 20px;
+            color: black;
+            float: right;
+            font-weight: 200;">Runs {{runCountJDoodle}}</span>
         </div>
         <textarea  *ngIf="resultOfCompilation" class="form-control output" rows="10" disabled="true"
             aria-label="output-textarea" [ngStyle]="{
