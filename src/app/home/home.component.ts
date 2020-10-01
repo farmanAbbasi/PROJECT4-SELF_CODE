@@ -19,11 +19,15 @@ export class HomeComponent implements OnInit {
   appName="Self-Code";
 
 
-  constructor(private httpGitService: GitserviceService, private cd: ChangeDetectorRef) { }
+  constructor(private httpGitService: GitserviceService, private cd: ChangeDetectorRef,
+    private gitService: GitserviceService) { }
 
   async ngOnInit() {
+
+   
     this.data = await this.httpGitService.getRepoData();
     console.log(this.data);
+
   }
 
   async getContentFromUrl(url, name, i) {

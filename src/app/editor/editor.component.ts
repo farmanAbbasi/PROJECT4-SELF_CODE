@@ -1,3 +1,4 @@
+// https://medium.com/@ofir3322/create-an-online-ide-with-angular-6-nodejs-part-1-163a939a7929
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as ace from 'ace-builds';
 import 'ace-builds/src-noconflict/mode-python';
@@ -7,6 +8,7 @@ import 'ace-builds/src-noconflict/theme-twilight';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/theme-solarized_light';
 import 'ace-builds/src-noconflict/theme-dracula';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 
 import 'ace-builds/src-noconflict/ext-language_tools';
@@ -17,6 +19,7 @@ const THEME = 'ace/theme/github';
 const THEME2 = 'ace/theme/twilight';
 const THEME3='ace/theme/dracula';
 const THEME4='ace/theme/solarized_light';
+const THEME5='ace/theme/monokai';
 
 const LANG = 'ace/mode/python';
 const LANG2 = 'ace/mode/java';
@@ -35,7 +38,8 @@ export class EditorComponent implements OnInit {
   resultOfCompilation:any;
   runClicked:boolean=false;
   lang:string="python3";
-
+  errorOccured:boolean=false;
+  runCountJDoodle:number;
 
 
   constructor( private httpGitService:GitserviceService) { }
@@ -50,6 +54,7 @@ export class EditorComponent implements OnInit {
     this.codeEditor.setShowFoldWidgets(true);
     this.codeEditor.setOption("showPrintMargin", false)
     this.codeEditor.setOption("fontSize",15);
+    this.codeEditor.setOption("autoScrollEditorIntoView",true)
     // hold reference to beautify extension
     this.editorBeautify = ace.require('ace/ext/beautify');
   }
@@ -58,7 +63,7 @@ export class EditorComponent implements OnInit {
   private getEditorOptions(): Partial<ace.Ace.EditorOptions> & { enableBasicAutocompletion?: boolean; } {
     const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
       highlightActiveLine: true,
-      minLines: 18,
+      minLines: 24,
       maxLines: Infinity,
     };
     const extraEditorOptions = { enableBasicAutocompletion: true };
@@ -84,8 +89,11 @@ export class EditorComponent implements OnInit {
     else if(valueForTheme==3){
       this.codeEditor.setTheme(THEME3);
     }
-    else{
+    else if(valueForTheme==4){
       this.codeEditor.setTheme(THEME4);
+    }
+    else{
+      this.codeEditor.setTheme(THEME5);
     }
  }
  onLanguageChange(language){
@@ -122,7 +130,20 @@ export class EditorComponent implements OnInit {
     this.runClicked=true;
     this.resultOfCompilation=await this.httpGitService.runAndCompileCode(postData);
     this.runClicked=false;
+    if(this.resultOfCompilation.output.toLowerCase().includes("Traceback (most recent call last):")
+    || this.resultOfCompilation.output.toLowerCase().includes("error")){
+      this.errorOccured=true;
+    }else{
+      this.errorOccured=false;
+    }
     console.log(this.resultOfCompilation);
+    //after running
+    let postDataForHits={
+      clientId: "afc751fc18ad19bc8ae8c27335f929d4",
+      clientSecret:"e4668c407d23cc41dc2b252c1f84bb931a56fbb9a073600c7a4669926dba528f"
+    }
+    let d:any=await this.httpGitService.getHitCountFromJDoodle(postDataForHits);
+    this.runCountJDoodle=d.used;
     
   }
 
@@ -157,9 +178,10 @@ export class EditorComponent implements OnInit {
    *  beautify the editor content, rely on Ace Beautify extension.
    */
   public beautifyContent(): void {
-    if (this.codeEditor && this.editorBeautify) {
-      const session = this.codeEditor.getSession();
-      this.editorBeautify.beautify(session);
+      if (this.codeEditor && this.editorBeautify) {
+        const session = this.codeEditor.getSession();
+        this.editorBeautify.beautify(session);
+      
     }
   }
 }

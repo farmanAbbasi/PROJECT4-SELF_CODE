@@ -1,87 +1,58 @@
-
-<div>
-    <!-- header -->
-    <nav class="navbar navbar-light bg-light ">
-        <div class="container text-center p-2 ">
-            <span class="mx-auto text-bold" style="font-weight: 700;">Designed to Inspire</span>
-        </div>
-    </nav>
-</div>
-
-<div class="container h-100 mt-4">
+<div class="container" style="padding:0px">
+    <div class="a" align="center">
+        <span style="font-weight: 700;">Designed to Inspire</span>
+    </div>
+    <div id="b" style=" height: 66vh; overflow-y: auto;">
+        <div #codeEditor></div>
+    </div>
+    <div class="c">
+        <img *ngIf="runClicked" src="../../assets/RingPreloader.gif" style="margin-top:10px;width:37px;margin-right:10px;margin-left:10px;position:relative">
+        <button class="btn btnMe" style="background-color: #3473b8" (click)="getResultOfCodeRun()"><i style="margin-right:5px"class="fa fa-play" aria-hidden="true"></i>Run</button>
+        <!-- <button class="btn btnMe" (click)="beautifyContent()">Beautify</button> -->
+        <span>
+                <button class="btn btnMe" style="background-color:#38aa4a">
+                    <select class="languages-select" style="background-color:#38aa4a"  (change)="onLanguageChange($event.target.value)">
+                        <option value="1">Python</option>
+                        <option value="2">Java</option>
+                    </select>
     
-    <!-- languages & theme -->
-    <div class="row mb-4 justify-content-center mx-4">
-        <!-- languages select -->
-        <div class="col-auto col-lg-3 col-md-4 col-sm-6">
-            <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="languages-select">Languages</label>
-                </div>
-                <select class="languages-select" id="languages-select" #languagesSelect (change)="onLanguageChange($event.target.value)">
-                    <option value="1">Python</option>
-                    <option value="2">Java</option>
+                </button>
+            </span>
+        <button class="btn btnMe"style="background-color: #febf32" (click)="clearContent()"><i style="margin-right:5px"class="fa fa-eraser" aria-hidden="true"></i>Clear</button>
+        <span>
+            <button class="btn btnMe" style="background-color: #e3372f">
+                <select class="languages-select" style="background-color: #e3372f" (change)="onItemChange($event.target.value)">
+                    <option value="1" selected>Theme</option>
+                    <option value="1">Light</option>
+                    <option value="2">Dark</option>
+                    <option value="3">Dracula</option>
+                    <option value="4">Solarized</option>
+                    <option value="5">Monokai</option>
                 </select>
-            </div>
-        </div>
-        <!-- theme radio buttons -->
-        <div class="col-auto col-lg-3 col-md-4 col-sm-6">
-                <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="languages-select">Theme</label>
-                        </div>
-                        <select class="languages-select" id="languages-select" #languagesSelect (change)="onItemChange($event.target.value)">
-                            <option value="1">Light</option>
-                            <option value="2">Dark</option>
-                            <option value="3">Dracula</option>
-                            <option value="4">Solarized</option>
-                        </select>
-                    </div>
-        </div>
-    </div>
-    
-    <!-- the code editor -->
-    <!-- <div class="row mb-4">
-        <div class="col">
-            <div class="code-editor" #codeEditor></div>
-        </div>
-    </div> -->
-    <div id="parent">
-            <div id="editor" #codeEditor></div>
-        </div>
+            </button>
+        </span>
+     
 
-    <!-- run, clear & beautify buttons -->
-    
-    <div class="row mb-4 justify-content-center mx-4">
-            <img *ngIf="runClicked" src="../../assets/RingPreloader.gif" style="width:45px;position:relative">   
-        <div class="col-4 col-lg-2 col-md-3 col-sm-4 w-75">
-            
-            <button type="button" class="btn btn-dark btn-sm btn-block px-4 mx-2" (click)="getResultOfCodeRun()">
-                Run
-            </button>
-        </div>
-        <div class="col-4 col-lg-2 col-md-3 col-sm-4 w-75">
-            <button type="button" class="btn btn-primary btn-sm btn-block px-4 mx-2" (click)="clearContent()">
-                Clear
-            </button>
-        </div>
-        <!-- <div class="col-4 col-lg-2 col-md-3 col-sm-4 w-75">
-            <button type="button" class="btn btn-beautify btn-sm btn-block px-4 mx-2" (click)="setContent()">
-                Beautify
-            </button>
-        </div> -->
-    </div>
 
-    <!-- output box -->
-    <div class="row mt-4">
-        <div class="col">
-            <div class="label-box border">
-                <span class="mx-4 font-weight-light">Output</span>
-                <span *ngIf="resultOfCompilation" style="margin-right:20px">Memory: {{resultOfCompilation.memory}}</span>
-                <span *ngIf="resultOfCompilation" >CPU Time: {{resultOfCompilation.cpuTime}}</span>
-            </div>
-            <textarea *ngIf="resultOfCompilation"class="form-control output" rows="6" disabled="true" aria-label="output-textarea">{{resultOfCompilation.output}}
-            </textarea>
+    </div>
+    <div class="d">
+
+        <div class="label-box border">
+            <span style=" margin-left: 20px;
+            color: black;
+            font-weight: 200;">Output</span>
+            <span *ngIf="resultOfCompilation" style="margin-right:20px ;color:black">Memory: {{resultOfCompilation.memory}}</span>
+            <span *ngIf="resultOfCompilation" style="color:black">CPU Time: {{resultOfCompilation.cpuTime}}</span>
+            <span style=" margin-right: 20px;
+            color: black;
+            float: right;
+            font-weight: 200;">Runs {{runCountJDoodle}}</span>
         </div>
+        <textarea  *ngIf="resultOfCompilation" class="form-control output" rows="10" disabled="true"
+            aria-label="output-textarea" [ngStyle]="{
+                'background-color': errorOccured ? 'black' : '#140d86',
+                'color': errorOccured  ? 'white' : 'white'}">{{resultOfCompilation.output}}
+        </textarea>
+
     </div>
 </div>

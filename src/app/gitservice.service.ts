@@ -7,10 +7,12 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 export class GitserviceService {
 
   BASE_URL: string = "https://api.github.com/";
-  BASE_URL_COMPILER:string="https://api.jdoodle.com/execute";
-  ownerName: string = "farmanAbbasi";
-  repoName: string = "pythonAll2";
-  
+  BASE_URL_COMPILER:string="https://api.jdoodle.com/";
+  // ownerName: string = "farmanAbbasi";
+  // repoName: string = "pythonAll2";
+  ownerName: string = "";
+  repoName: string = "";
+ 
 
   constructor(private http: HttpClient) { }
 
@@ -26,8 +28,12 @@ export class GitserviceService {
     return this.http.get(url, { responseType: 'text' }).toPromise();
   }
   runAndCompileCode(data){
-      return this.http.post("https://cors-anywhere.herokuapp.com/"+this.BASE_URL_COMPILER,data)
+      return this.http.post("https://cors-anywhere.herokuapp.com/"+this.BASE_URL_COMPILER+"execute/",data)
       .toPromise();
+    }
+
+    getHitCountFromJDoodle(data){
+      return this.http.post("https://cors-anywhere.herokuapp.com/"+this.BASE_URL_COMPILER+"v1/credit-spent",data).toPromise();
     }
  
   
