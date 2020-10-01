@@ -1,3 +1,4 @@
+// https://medium.com/@ofir3322/create-an-online-ide-with-angular-6-nodejs-part-1-163a939a7929
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as ace from 'ace-builds';
 import 'ace-builds/src-noconflict/mode-python';

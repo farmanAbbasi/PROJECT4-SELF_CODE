@@ -1,7 +1,9 @@
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
   }
+ 
+  
   
   /* Track */
   ::-webkit-scrollbar-track {
@@ -20,3 +22,4 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #b5b9bd; 
   }
+ 

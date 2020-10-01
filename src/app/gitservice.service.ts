@@ -8,9 +8,11 @@ export class GitserviceService {
 
   BASE_URL: string = "https://api.github.com/";
   BASE_URL_COMPILER:string="https://api.jdoodle.com/";
-  ownerName: string = "farmanAbbasi";
-  repoName: string = "pythonAll2";
-  
+  // ownerName: string = "farmanAbbasi";
+  // repoName: string = "pythonAll2";
+  ownerName: string = "";
+  repoName: string = "";
+ 
 
   constructor(private http: HttpClient) { }
 
