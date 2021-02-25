@@ -6,8 +6,14 @@
         <div #codeEditor></div>
     </div>
     <div class="c">
-        <img *ngIf="runClicked" src="../../assets/RingPreloader.gif" style="margin-top:10px;width:37px;margin-right:10px;margin-left:10px;position:relative">
-        <button class="btn btnMe" style="background-color: #3473b8" (click)="getResultOfCodeRun()"><i style="margin-right:5px"class="fa fa-play" aria-hidden="true"></i>Run</button>
+        <button class="btn btnMe" style="position: relative;background-color: #3473b8" (click)="getResultOfCodeRun()"><i *ngIf="!runClicked"style="margin-right:5px"class="fa fa-play" aria-hidden="true"></i>
+            <img *ngIf="runClicked" src="../../assets/RingPreloader.gif" style="position: absolute;
+            width: 21px;
+            left: 25%;
+            top: 50%;
+            transform: translate(-50%,-50%);">
+
+            Run</button>
         <!-- <button class="btn btnMe" (click)="beautifyContent()">Beautify</button> -->
         <span>
                 <button class="btn btnMe" style="background-color:#38aa4a">
@@ -38,9 +44,9 @@
     <div class="d">
 
         <div class="label-box border">
-            <span style=" margin-left: 20px;
+            <!-- <span style=" margin-left: 20px;
             color: black;
-            font-weight: 200;">Output</span>
+            font-weight: 200;">Output-</span> -->
             <span *ngIf="resultOfCompilation" style="margin-right:20px ;color:black">Memory: {{resultOfCompilation.memory}}</span>
             <span *ngIf="resultOfCompilation" style="color:black">CPU Time: {{resultOfCompilation.cpuTime}}</span>
             <span style=" margin-right: 20px;
@@ -51,7 +57,7 @@
         <textarea  *ngIf="resultOfCompilation" class="form-control output" rows="10" disabled="true"
             aria-label="output-textarea" [ngStyle]="{
                 'background-color': errorOccured ? 'black' : '#140d86',
-                'color': errorOccured  ? 'white' : 'white'}">{{resultOfCompilation.output}}
+                'color': errorOccured  ? 'white' : 'white'}" style="border: none;">{{resultOfCompilation.output}}
         </textarea>
 
     </div>
