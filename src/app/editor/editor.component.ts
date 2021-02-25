@@ -123,9 +123,11 @@ export class EditorComponent implements OnInit {
     let postData={
       script : typedCode,
       language: this.lang,
+      vserionIndex:3,
       clientId: "afc751fc18ad19bc8ae8c27335f929d4",
-      clientSecret:"e4668c407d23cc41dc2b252c1f84bb931a56fbb9a073600c7a4669926dba528f"
+      clientSecret:"2412fad89ff42a44332f0e58c4e3784bcf978e23ef624f91f222560274637eaf"
     }
+    //console.log(postData)
     this.runClicked=true;
     this.resultOfCompilation=await this.httpGitService.runAndCompileCode(postData);
     this.runClicked=false;
@@ -135,11 +137,11 @@ export class EditorComponent implements OnInit {
     }else{
       this.errorOccured=false;
     }
-    console.log(this.resultOfCompilation);
+    //console.log(this.resultOfCompilation);
     //after running
     let postDataForHits={
       clientId: "afc751fc18ad19bc8ae8c27335f929d4",
-      clientSecret:"e4668c407d23cc41dc2b252c1f84bb931a56fbb9a073600c7a4669926dba528f"
+      clientSecret:"2412fad89ff42a44332f0e58c4e3784bcf978e23ef624f91f222560274637eaf"
     }
     let d:any=await this.httpGitService.getHitCountFromJDoodle(postDataForHits);
     this.runCountJDoodle=d.used;
