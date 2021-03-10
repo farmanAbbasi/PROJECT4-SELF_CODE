@@ -9,7 +9,7 @@ export class GitserviceService {
   BASE_URL: string = "https://api.github.com/";
   BASE_URL_COMPILER:string="https://api.jdoodle.com/";
   ownerName: string = "farmanAbbasi";
-  repoName: string = "pythonAll3";
+  repoName: string = "farmanAbbasi-pythonAll3";
   corsBASEURL:string="https://google-url-for-movies.herokuapp.com"
   
 
