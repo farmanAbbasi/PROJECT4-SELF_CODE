@@ -125,7 +125,7 @@ export class EditorComponent implements OnInit {
       language: this.lang,
       vserionIndex:3,
       clientId: "afc751fc18ad19bc8ae8c27335f929d4",
-      clientSecret:"2412fad89ff42a44332f0e58c4e3784bcf978e23ef624f91f222560274637eaf"
+      clientSecret:"195490c7a338d8110dc659ffa441d575eea64131049fda63bf082a80f97de333"
     }
     //console.log(postData)
     this.runClicked=true;
@@ -141,7 +141,7 @@ export class EditorComponent implements OnInit {
     //after running
     let postDataForHits={
       clientId: "afc751fc18ad19bc8ae8c27335f929d4",
-      clientSecret:"2412fad89ff42a44332f0e58c4e3784bcf978e23ef624f91f222560274637eaf"
+      clientSecret:"195490c7a338d8110dc659ffa441d575eea64131049fda63bf082a80f97de333"
     }
     let d:any=await this.httpGitService.getHitCountFromJDoodle(postDataForHits);
     this.runCountJDoodle=d.used;
