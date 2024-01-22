@@ -10,7 +10,7 @@ export class GitserviceService {
   BASE_URL_COMPILER:string="https://api.jdoodle.com/";
   ownerName: string = "farmanAbbasi";
   repoName: string = "farmanAbbasi-pythonAll3";
-  corsBASEURL:string="https://google-url-for-movies.herokuapp.com"
+  corsBASEURL:string="https://cors-anywhere.herokuapp.com/"
   
 
   constructor(private http: HttpClient) { }
@@ -28,18 +28,21 @@ export class GitserviceService {
   }
   runAndCompileCode(data){
     var d={
-      "url":this.BASE_URL_COMPILER+"execute/",
-      "postData":data
+      script : data.script,
+      language: data.language,
+      versionIndex:data.vserionIndex,
+      clientId: data.clientId,
+      clientSecret : data.clientSecret
     }
-      return this.http.post(this.corsBASEURL+"/enableCors",d).toPromise();
+      return this.http.post(this.corsBASEURL+this.BASE_URL_COMPILER+"v1/execute",d).toPromise();
     }
 
     getHitCountFromJDoodle(data){
       var d={
-        "url":this.BASE_URL_COMPILER+"v1/credit-spent",
-        "postData":data
+        clientId: data.clientId,
+        clientSecret : data.clientSecret
       }
-        return this.http.post(this.corsBASEURL+"/enableCors",d).toPromise();
+        return this.http.post(this.corsBASEURL+this.BASE_URL_COMPILER+"v1/credit-spent",d).toPromise();
     }
  
   
