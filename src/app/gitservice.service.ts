@@ -34,7 +34,6 @@ export class GitserviceService {
       clientId: data.clientId,
       clientSecret : data.clientSecret
     }
-    console.log(d);
       return this.http.post(this.corsBASEURL+this.BASE_URL_COMPILER+"v1/execute",d).toPromise();
     }
 
