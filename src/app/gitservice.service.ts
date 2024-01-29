@@ -10,7 +10,7 @@ export class GitserviceService {
   BASE_URL_COMPILER:string="https://api.jdoodle.com/";
   ownerName: string = "farmanAbbasi";
   repoName: string = "farmanAbbasi-pythonAll3";
-  corsBASEURL:string="https://cors-anywhere.herokuapp.com/"
+  corsBASEURL:string="https://backendurl-production.up.railway.app/enableCors?url="
   
 
   constructor(private http: HttpClient) { }
