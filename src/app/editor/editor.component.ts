@@ -133,8 +133,8 @@ export class EditorComponent implements OnInit {
   
   async getResultOfCodeRun(){
     //get the code type written in which language
-    let whatLanguage = this.getLangOfTypedCode();
-    this.onLanguageChange(whatLanguage)
+    //let whatLanguage = this.getLangOfTypedCode();
+    //this.onLanguageChange(whatLanguage)
     
     let typedCode=this.getContent()
     if(typedCode.length==0 || typedCode==null){
