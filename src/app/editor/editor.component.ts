@@ -116,18 +116,16 @@ export class EditorComponent implements OnInit {
       return code;
     }
   }
-  public getLangOfTypedCode(){
+ public getLangOfTypedCode(){
     let typedCode=this.getContent()
-    const pythonPattern = /\b(def|import|from|class)\b/;
-    const javaPattern = /\b(public\s+)?class\s+\w+\s*{/;
-
+    const javaPattern = /\{+/;
     let language = 1; //for python else is java
-
     // Test if the code matches Python or Java patterns
-    if (pythonPattern.test(typedCode)) {
-      language = 1;
-    } else if (javaPattern.test(typedCode)) {
+    if (typedCode.match(javaPattern)) {
+      console.log("eee")
       language = 2;
+    } else {
+      language = 1;
     } 
     return language;
   }
