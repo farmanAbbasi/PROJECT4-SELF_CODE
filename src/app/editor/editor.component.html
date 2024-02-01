@@ -17,7 +17,7 @@
         <!-- <button class="btn btnMe" (click)="beautifyContent()">Beautify</button> -->
         <span>
                 <button class="btn btnMe" style="background-color:#38aa4a">
-                    <select class="languages-select" style="background-color:#38aa4a"  (change)="onLanguageChange($event.target.value)">
+                    <select class="languages-select" style="background-color:#38aa4a" [(ngModel)]="lang" (change)="onLanguageChange($event.target.value)">
                         <option value="1">Python</option>
                         <option value="2">Java</option>
                     </select>
