@@ -116,7 +116,27 @@ export class EditorComponent implements OnInit {
       return code;
     }
   }
+  public getLangOfTypedCode(){
+    let typedCode=this.getContent()
+    const pythonPattern = /\b(def|import|from|class)\b/;
+    const javaPattern = /\b(public\s+)?(class)\s/;
+    let language = 1; //for python else is java
+
+    // Test if the code matches Python or Java patterns
+    if (pythonPattern.test(typedCode)) {
+      language = 1;
+    } else if (javaPattern.test(typedCode)) {
+      language = 2;
+    } 
+    return language;
+  }
+    
+  
   async getResultOfCodeRun(){
+    //get the code type written in which language
+    let whatLanguage = this.getLangOfTypedCode();
+    this.onLanguageChange(whatLanguage)
+    
     let typedCode=this.getContent()
     if(typedCode.length==0 || typedCode==null){
       return;
